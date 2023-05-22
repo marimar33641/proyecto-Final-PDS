@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de datos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .navbar li {
+            margin-right: 10px;
+        }
+        
+        .navbar li a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/pedidos">Pedidos</a></li>
+            <li><a href="/reservas">Reservas</a></li>
+            <li><a href="/videos">Videos</a></li>
+        </ul>
+    </div>
+    
+    <h1>Tabla de datos</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Producto</th>
+                <th>Máquina</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.producto }}</td>
+                    <td>{{ item.maquina }}</td>
+                    <td>{{ item.fecha }}</td>
+                    <td>{{ item.hora }}</td>
+                    <td>{{ item.estado }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

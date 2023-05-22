@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Videos Grabados</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .navbar li {
+            margin-right: 10px;
+        }
+        
+        .navbar li a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px;
+        }
+        
+        .video-container {
+            margin: 20px;
+        }
+        
+        .video-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .video-item {
+            margin: 10px;
+        }
+        
+        .video-item video {
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/pedidos">Pedidos</a></li>
+            <li><a href="/reservas">Reservas</a></li>
+            <li><a href="/videos">Videos</a></li>
+        </ul>
+    </div>
+    
+    <div class="video-container">
+        <h1>Videos Grabados</h1>
+        
+        <div class="video-list">
+            <div class="video-item">
+                <video controls>
+                    <source src="/static/videos/video1.mp4" type="video/mp4">
+                </video>
+                <p>Video 1 - Fecha: XX</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="/static/videos/video2.mp4" type="video/mp4">
+                </video>
+                <p>Video 2 - Fecha: XX</p>
+            </div>
+            <!-- Agrega más videos aquí -->
+        </div>
+    </div>
+</body>
+</html>

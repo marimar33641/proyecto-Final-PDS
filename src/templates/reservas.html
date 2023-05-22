@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .navbar li {
+            margin-right: 10px;
+        }
+        
+        .navbar li a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px;
+        }
+        
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .form-container input[type="text"],
+        .form-container input[type="date"],
+        .form-container input[type="time"],
+        .form-container select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .form-container input[type="submit"] {
+            background-color: #ccc;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/pedidos">Pedidos</a></li>
+            <li><a href="/reservas">Reservas</a></li>
+            <li><a href="/videos">Videos</a></li>
+        </ul>
+    </div>
+    
+    <div class="form-container">
+        <h1>Formulario</h1>
+        
+        <form action="/reservas" method="post">
+            <label for="id">Id:</label>
+            <input type="text" id="id" name="id">
+            
+            <label for="producto">Producto:</label>
+            <input type="text" id="producto" name="producto">
+            
+            <label for="maquina">Máquina:</label>
+            <input type="text" id="maquina" name="maquina">
+            
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha">
+            
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" name="hora">
+            
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="PENDIENTE">PENDIENTE</option>
+                <option value="FINALIZADO">FINALIZADO</option>
+            </select>
+            
+            <br>
+            
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
