@@ -65,16 +65,32 @@ def reserva():
     return render_template('reservas.html')
 
 
+@app.route('/pedidos')
+
+def pedidos():
+    
+    # Crea un cursor para ejecutar consultas SQL
+    cur = db.connection.cursor()
+
+    # Define la consulta SQL para obtener los datos de la tabla 'ventas'
+    query = "SELECT id_producto, producto, maquina, fecha, hora, estado FROM ventas"
+
+    # Ejecuta la consulta SQL
+    cur.execute(query)
+
+    # Obtiene todos los resultados de la consulta
+    data = cur.fetchall()
+
+    # Cierra el cursor
+    cur.close()
+
+    return render_template('pedidos.html', data=data)
 
 
 @app.route('/home')
 def home():
     return render_template('home.html')
 
-@app.route('/pedidos')
-
-def pedidos():
-    return render_template('pedidos.html')
 
 @app.route('/videos')
 
