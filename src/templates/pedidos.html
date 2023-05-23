@@ -4,6 +4,7 @@
     <title>Tabla de datos</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -30,9 +31,15 @@
             padding: 5px;
         }
         
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
         table {
             border-collapse: collapse;
             width: 100%;
+            margin-top: 20px;
         }
         
         th, td {
@@ -43,6 +50,59 @@
         
         th {
             background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .search-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        
+        .search-container input[type="text"] {
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        .search-container input[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: #fff;
+            padding: 6px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .search-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        .actions-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .actions-container a {
+            margin: 0 5px;
+            padding: 6px 10px;
+            border: none;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .edit-button {
+            background-color: #2196F3;
+        }
+        
+        .delete-button {
+            background-color: #f44336;
         }
     </style>
 </head>
@@ -53,10 +113,18 @@
             <li><a href="/pedidos">Pedidos</a></li>
             <li><a href="/reservas">Reservas</a></li>
             <li><a href="/videos">Videos</a></li>
+            <li><a href="/localizacion">Localización</a></li>
         </ul>
     </div>
     
     <h1>Historial de pedidos</h1>
+    
+    <div class="search-container">
+        <form action="/buscar" method="get">
+            <input type="text" id="search" name="search" placeholder="Buscar por producto...">
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
     
     <table>
         <thead>
@@ -67,6 +135,7 @@
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -78,6 +147,10 @@
                     <td>{{ item[3] }}</td>
                     <td>{{ item[4] }}</td>
                     <td>{{ item[5] }}</td>
+                    <td class="actions-container">
+                        <a class="edit-button" href="/editar/{{item.0}}">Editar pedido</a>
+                        <a class="delete-button" href="/borrar/{{item.0}}">Borrar Pedido</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

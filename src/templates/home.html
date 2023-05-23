@@ -6,6 +6,7 @@
         body {
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
         }
         
         .navbar {
@@ -36,20 +37,36 @@
             background-color: #f9f9f9;
         }
         
+        .welcome-section h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .welcome-section p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
         .dashboard-options {
             display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
         }
         
         .dashboard-options a {
             display: block;
             text-align: center;
             padding: 10px 20px;
-            background-color: #ccc;
-            color: #333;
+            margin: 10px;
+            background-color: #2196F3;
+            color: #fff;
             text-decoration: none;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dashboard-options a:hover {
+            background-color: #0e81ce;
         }
     </style>
 </head>
@@ -60,6 +77,7 @@
             <li><a href="/pedidos">Pedidos</a></li>
             <li><a href="/reservas">Reservas</a></li>
             <li><a href="/videos">Videos</a></li>
+            <li><a href="/localizacion">Localización</a></li>
         </ul>
     </div>
     
@@ -71,6 +89,7 @@
             <a href="/pedidos">Pedidos</a>
             <a href="/reservas">Reservas</a>
             <a href="/videos">Videos</a>
+            <a href="/localizacion">Localización</a>
         </div>
     </div>
 </body>

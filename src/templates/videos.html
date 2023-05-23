@@ -6,6 +6,7 @@
         body {
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
         }
         
         .navbar {
@@ -32,19 +33,33 @@
         
         .video-container {
             margin: 20px;
+            text-align: center;
+        }
+        
+        .video-container h1 {
+            margin-bottom: 10px;
         }
         
         .video-list {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
         }
         
         .video-item {
             margin: 10px;
+            max-width: 300px;
         }
         
         .video-item video {
-            max-width: 300px;
+            width: 100%;
+            max-height: 200px;
+        }
+        
+        .video-item p {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
@@ -55,6 +70,7 @@
             <li><a href="/pedidos">Pedidos</a></li>
             <li><a href="/reservas">Reservas</a></li>
             <li><a href="/videos">Videos</a></li>
+            <li><a href="/localizacion">Localización</a></li>
         </ul>
     </div>
     

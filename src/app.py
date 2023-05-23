@@ -40,20 +40,10 @@ def reserva():
         fecha = request.form['fecha']
         hora = request.form['hora']
         estado = request.form['estado']
-        args = {
-            'id': id_producto,
-            'producto': producto,
-            'maquina': maquina,
-            'fecha': fecha,
-            'hora': hora,
-            'estado': estado,
-        }
         # Crea un cursor para ejecutar consultas SQL
         cur = db.connection.cursor()
-
         # Define la consulta SQL para insertar los datos en la base de datos
         query = "INSERT INTO ventas (id_producto, producto, maquina, fecha, hora, estado) VALUES (%s, %s, %s, %s, %s, %s)"
-
         # Ejecuta la consulta SQL con los valores de los inputs del formulario
         cur.execute(query, (id_producto, producto, maquina, fecha, hora, estado))
         # Guarda los cambios en la base de datos
@@ -61,41 +51,78 @@ def reserva():
         # Cierra el cursor
         cur.close()
         return render_template('reservas.html')
-    
     return render_template('reservas.html')
 
 
 @app.route('/pedidos')
 
 def pedidos():
-    
     # Crea un cursor para ejecutar consultas SQL
     cur = db.connection.cursor()
-
     # Define la consulta SQL para obtener los datos de la tabla 'ventas'
     query = "SELECT id_producto, producto, maquina, fecha, hora, estado FROM ventas"
-
     # Ejecuta la consulta SQL
     cur.execute(query)
-
     # Obtiene todos los resultados de la consulta
     data = cur.fetchall()
-
     # Cierra el cursor
     cur.close()
-
     return render_template('pedidos.html', data=data)
-
 
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+@app.route('/editar/<id_producto>')
+def editar_pedido(id_producto):
+    cur = db.connection.cursor()
+    cur.execute('SELECT * FROM ventas WHERE id_producto = %s', (id_producto,))
+    data = cur.fetchall()
+    print(data[0])
+    return render_template('editar_pedido.html', id_producto=id_producto, data=data)
+
+@app.route('/cargar/<id_producto>', methods = ['POST'])
+def cargar(id_producto):
+    if request.method == 'POST':
+        producto = request.form['producto']
+        maquina = request.form['maquina']
+        fecha = request.form['fecha']
+        hora = request.form['hora']
+        estado = request.form['estado']
+        cur = db.connection.cursor()
+        cur.execute("""
+            UPDATE ventas
+            SET producto = %s,
+                maquina = %s,
+                fecha = %s,
+                hora = %s,
+                estado = %s
+            WHERE id_producto = %s
+        """, (producto, maquina, fecha, hora, estado, id_producto))
+        db.connection.commit()
+        flash("Pedido actualizado")
+        return redirect(url_for('pedidos'))
+
+
+@app.route('/borrar/<string:id_producto>')
+def borrarPedido(id_producto):
+    cur = db.connection.cursor()
+    cur.execute('DELETE FROM ventas Where id_producto ={0}'.format(id_producto))
+    db.connection.commit()
+    flash('Pedido removido')
+    return redirect(url_for('pedidos'))
 
 
 @app.route('/videos')
 
 def videos():
     return render_template('videos.html')
+
+@app.route('/localizacion')
+
+def localizacion():
+    return render_template('localizacion.html')
+
 
 
 if __name__ == '__main__':
